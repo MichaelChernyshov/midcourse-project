@@ -140,13 +140,13 @@ let pokeCollection = document.querySelector(".main__cards");
         let newCardNumber = newPokemonInfoSection.appendChild(document.createElement("p"));
         let newPokeName = newPokemonInfoSection.appendChild(document.createElement("h1"));
         let newPokeType = newPokemonInfoSection.appendChild(document.createElement("h2"));
-        newCardNumber.innerHTML = element.id;
+        newCardNumber.innerHTML = `№${element.id}`;
         newCardNumber.classList.add('card__number');
     
         newPokeName.innerHTML = element.name;
         newPokeName.classList.add('card__poke-name');
     
-        newPokeType.innerHTML = element.type;
+        newPokeType.innerHTML = `${element.type[0]} ${element.type[1] ? element.type[1] : "" }`;
         newPokeType.classList.add('card__poke-type');
     }
 

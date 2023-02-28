@@ -1,5 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap");
 * {
   box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
@@ -14,7 +16,6 @@ body {
   height: 100vh;
   margin: 0 auto;
 }
-
 
 .main__cards {
   width: 100%;
@@ -31,15 +32,22 @@ body {
   flex: 0 21%;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 5%;
 }
 .main__card .card__image {
   background-color: rgba(189, 189, 189, 0.482);
+  border-radius: 5%;
+  margin-bottom: 5%;
+}
+.main__card .card__poke-name {
+  font-weight: 500;
 }
 
 .header__figure {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2%;
 }
 .header__figure .header__logo {
   width: 50%;
