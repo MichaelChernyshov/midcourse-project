@@ -115,8 +115,6 @@ var pokemonsCollection = [
 // Selecting all card
 let pokeCollection = document.querySelector(".main__cards");
 
-
-
     for (let i = 0; i < pokemonsCollection.length; i++) {
         const element = pokemonsCollection[i];
         
@@ -134,7 +132,6 @@ let pokeCollection = document.querySelector(".main__cards");
             // Adding new section-description 
          let newPokemonInfoSection =  newPokemonSection.appendChild(document.createElement("section"));
          newPokemonInfoSection.classList.add("card__info");
-
     
         // Adding card-number poke-name poke-type with classes
         let newCardNumber = newPokemonInfoSection.appendChild(document.createElement("p"));
@@ -146,7 +143,7 @@ let pokeCollection = document.querySelector(".main__cards");
         newPokeName.innerHTML = element.name;
         newPokeName.classList.add('card__poke-name');
     
-        newPokeType.innerHTML = `${element.type[0]} ${element.type[1] ? element.type[1] : "" }`;
+        newPokeType.innerHTML = `${element.type[0]}${element.type[1] ? element.type[1] : "" }`;
         newPokeType.classList.add('card__poke-type');
     }
 
