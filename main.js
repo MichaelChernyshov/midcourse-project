@@ -129,7 +129,7 @@ let pokeCollection = document.querySelector(".main__cards");
         let newPokePic = newFigure.appendChild(document.createElement("img"));
         newPokePic.setAttribute("src", `${element.thumbnail}`);
 
-            // Adding new section-description 
+        // Adding new section-description 
          let newPokemonInfoSection =  newPokemonSection.appendChild(document.createElement("section"));
          newPokemonInfoSection.classList.add("card__info");
     
@@ -143,8 +143,12 @@ let pokeCollection = document.querySelector(".main__cards");
         newPokeName.innerHTML = element.name;
         newPokeName.classList.add('card__poke-name');
     
-        newPokeType.innerHTML = `${element.type[0]}${element.type[1] ? element.type[1] : "" }`;
+        newPokeType.innerHTML = `${element.type[0]} ${element.type[1] ? element.type[1] : "" }`;
         newPokeType.classList.add('card__poke-type');
+
+        newFigure.addEventListener('click', function () {
+            console.log(`It's pokemon ${newCardNumber.textContent} and it's name is ${newPokeName.textContent} and it's tupe is ${newPokeType.textContent}`)
+        })
     }
 
     // Поменять секции на дивы и артикл на секцию 
