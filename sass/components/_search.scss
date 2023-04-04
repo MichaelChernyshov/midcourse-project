@@ -1,0 +1,12 @@
+.search__bar {
+    display: flex;
+    justify-content: center;
+
+    .main__search {
+        width: 50%;
+        font-size: 1rem;
+        padding: 10px 10px 10px 10px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+    }
+}
