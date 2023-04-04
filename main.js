@@ -13,7 +13,7 @@ function createPokemon(data) {
         pokeId = pokeId
     }
     
-    let newPokemonSection = pokemonsList.appendChild(document.createElement("section"));
+    let newPokemonSection = pokemonsList.appendChild(document.createElement("div"));
     newPokemonSection.classList.add('main__card');
 
     let newFigure = newPokemonSection.appendChild(document.createElement("figure"));
@@ -22,7 +22,7 @@ function createPokemon(data) {
     let newPokePic = newFigure.appendChild(document.createElement("img"));
     newPokePic.setAttribute("src", `${data.sprites.other['official-artwork'].front_default}`);
 
-    let newPokemonInfoSection =  newPokemonSection.appendChild(document.createElement("section"));
+    let newPokemonInfoSection =  newPokemonSection.appendChild(document.createElement("div"));
     newPokemonInfoSection.classList.add("card__info");
 
     let newCardNumber = newPokemonInfoSection.appendChild(document.createElement("p"));
