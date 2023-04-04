@@ -1,6 +1,19 @@
 // Поменять секции на дивы и артикл на секцию 
 const pokemonsList = document.querySelector('#pokemons-list');
 let URL = 'https://pokeapi.co/api/v2/pokemon/';
+const searchFuture = document.querySelector('#search-inp');
+
+const getPokemon = async () => {
+    let res = await fetch(URL);
+    let data = await res.json();
+    for (let i = 0; i < data.results.length; i++) {
+        const element = data.results[i];
+        let newRes = await fetch(element.url)
+        let newData = await newRes.json();
+        createPokemon(newData)
+    }
+}
+getPokemon()
 
 function createPokemon(data) {
     let types = data.types.map((type) => type.type.name);
@@ -37,18 +50,3 @@ function createPokemon(data) {
     newPokeType.innerHTML = `${types[0]} ${types[1] ? types[1] : "" }`;
     newPokeType.classList.add('card__poke-type');
 };
-
-    fetch(URL)
-    .then(response => response.json())
-    .then(data => {
-        for (let i = 0; i < data.results.length; i++) {
-        const element = data.results[i];
-        // console.log(element)
-        fetch(element.url)
-        .then(response => response.json())
-        .then(pokeInfo => {
-            createPokemon(pokeInfo);
-            // console.log(pokeInfo)
-        });
-     };
-    });
