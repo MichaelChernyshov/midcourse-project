@@ -64,26 +64,34 @@ body {
 
 @keyframes slideInFromTop {
   0% {
-    transform: translateY(-200%);
+    transform: translateY(-300%);
   }
   100% {
     transform: translateY(0);
+  }
+}
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 .header__figure {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2%;
 }
 .header__figure .header__logo {
   width: 50%;
   height: 50%;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 .header__figure .header__ball {
   width: 8%;
   height: 8%;
   position: relative;
-  bottom: 45px;
+  bottom: 120px;
   animation: 1s ease-out 0s 1 slideInFromTop;
 }/*# sourceMappingURL=index.css.map */
