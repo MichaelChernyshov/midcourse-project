@@ -52,6 +52,7 @@ function createPokemon(data) {
 
 searchInput.addEventListener('input', function (e) {
     const pokeNames = document.querySelectorAll('.card__poke-name');
+    const pokeNumbers = document.querySelectorAll('.card__number')
     const search = searchInput.value.toLowerCase();
 
 
@@ -62,5 +63,12 @@ searchInput.addEventListener('input', function (e) {
             pokeName.parentElement.parentElement.style.display = 'none';
         }
     })
-    console.log(search)
+
+    pokeNumbers.forEach((pokeNumber) => {
+        pokeNumber.parentElement.parentElement.style.display = 'flex';
+        
+        if (!pokeNumber.innerHTML.includes(search)) {
+            pokeNumber.parentElement.parentElement.style.display = 'none';
+        }
+    })
 })
