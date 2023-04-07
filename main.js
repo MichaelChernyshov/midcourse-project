@@ -1,7 +1,6 @@
-// Поменять секции на дивы и артикл на секцию 
+let URL = `https://pokeapi.co/api/v2/pokemon/`;
 const pokemonsList = document.querySelector('#pokemons-list');
-let URL = 'https://pokeapi.co/api/v2/pokemon/';
-const searchFuture = document.querySelector('#search-inp');
+const searchInput = document.querySelector('#search-inp');
 
 const getPokemon = async () => {
     let res = await fetch(URL);
@@ -50,3 +49,18 @@ function createPokemon(data) {
     newPokeType.innerHTML = `${types[0]} ${types[1] ? types[1] : "" }`;
     newPokeType.classList.add('card__poke-type');
 };
+
+searchInput.addEventListener('input', function (e) {
+    const pokeNames = document.querySelectorAll('.card__poke-name');
+    const search = searchInput.value.toLowerCase();
+
+
+    pokeNames.forEach((pokeName) => {
+        pokeName.parentElement.parentElement.style.display = 'flex';
+        
+        if (!pokeName.innerHTML.toLowerCase().includes(search)) {
+            pokeName.parentElement.parentElement.style.display = 'none';
+        }
+    })
+    console.log(search)
+})
