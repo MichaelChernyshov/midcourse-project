@@ -1,6 +1,6 @@
 let URL = `https://pokeapi.co/api/v2/pokemon/`;
 const pokemonsList = document.querySelector('#pokemons-list');
-const searchInput = document.querySelector('#search-inp');
+let searchInp = document.querySelector('#search-inp');
 
 const getPokemon = async () => {
     let res = await fetch(URL);
@@ -11,8 +11,35 @@ const getPokemon = async () => {
         let newData = await newRes.json();
         createPokemon(newData)
     }
-}
+};
+
 getPokemon()
+
+function searchPokemon() {
+    fetch(URL + searchInp.value)
+    .then(response => response.json())
+    .then(data => {
+        pokeId = data.id;
+        pokeNamess = data.name
+        createPokemon(data);
+        // showPokemon(data)
+    })
+};
+
+// function showPokemon(pokemon) {
+//     const pokeNames = document.querySelectorAll('.card__poke-name');
+//     const pokeNumbers = document.querySelectorAll('.card__number')
+//     const search = searchInp.value.toLowerCase();
+
+    
+//     pokeNames.forEach((pokeName) => {
+//         pokeName.parentElement.parentElement.style.display = 'flex';
+        
+//         if (!pokeName.innerHTML.toLowerCase().includes(search)) {
+//             pokeName.parentElement.parentElement.style.display = 'none';
+//         }
+//     });
+// }
 
 function createPokemon(data) {
     let types = data.types.map((type) => type.type.name);
@@ -43,32 +70,13 @@ function createPokemon(data) {
     newCardNumber.innerHTML = `№${pokeId}`;
     newCardNumber.classList.add('card__number');
     
-    newPokeName.innerHTML = data.name;
+    newPokeName.innerHTML = capitalize(data.name);
     newPokeName.classList.add('card__poke-name');
     
-    newPokeType.innerHTML = `${types[0]} ${types[1] ? types[1] : "" }`;
+    newPokeType.innerHTML = `${capitalize(types[0]) } ${types[1] ? capitalize(types[1]) : "" }`;
     newPokeType.classList.add('card__poke-type');
 };
 
-searchInput.addEventListener('input', function (e) {
-    const pokeNames = document.querySelectorAll('.card__poke-name');
-    const pokeNumbers = document.querySelectorAll('.card__number')
-    const search = searchInput.value.toLowerCase();
-
-
-    pokeNames.forEach((pokeName) => {
-        pokeName.parentElement.parentElement.style.display = 'flex';
-        
-        if (!pokeName.innerHTML.toLowerCase().includes(search)) {
-            pokeName.parentElement.parentElement.style.display = 'none';
-        }
-    })
-
-    pokeNumbers.forEach((pokeNumber) => {
-        pokeNumber.parentElement.parentElement.style.display = 'flex';
-        
-        if (!pokeNumber.innerHTML.includes(search)) {
-            pokeNumber.parentElement.parentElement.style.display = 'none';
-        }
-    })
-})
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
