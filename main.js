@@ -17,7 +17,16 @@ getPokemon()
 
 function searchPokemon() {
     fetch(URL + searchInp.value)
-    .then(response => response.json())
+    .then(response => {
+        if (response.ok) {
+            searchInp.style.borderColor = '#ddd';
+            return response.json();
+        } else {
+            searchInp.value = '';
+            searchInp.style.borderColor = 'red';
+            searchInp.placeholder = 'Enter another name of number';
+        }
+    })
     .then(data => {
         pokeId = data.id;
         pokeNamess = data.name
