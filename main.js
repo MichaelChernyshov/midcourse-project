@@ -19,7 +19,9 @@ function searchPokemon() {
     fetch(URL + searchInp.value)
     .then(response => {
         if (response.ok) {
+            searchInp.value = '';
             searchInp.style.borderColor = '#ddd';
+            searchInp.placeholder = 'Pokemon added at the end';
             return response.json();
         } else {
             searchInp.value = '';
@@ -28,8 +30,7 @@ function searchPokemon() {
         }
     })
     .then(data => {
-        pokeId = data.id;
-        pokeNamess = data.name
+        
         createPokemon(data);
         // showPokemon(data)
     })
