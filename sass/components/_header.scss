@@ -18,22 +18,24 @@
   }
 
 .header__figure {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 3%;
+  justify-content: center;
+  align-items: flex-end;
 
     .header__logo {
-        width: 50%;
-        height: 50%;
-        animation: 1s ease-out 0s 1 slideInFromLeft;
+      width: 50%;
+      height: 50%;
+      animation: 1s ease-out 0s 1 slideInFromLeft;
     }
 
     .header__ball {
-        width: 8%;
-        height: 8%;
-        position: relative;
-        bottom: 120px;
-        animation: 1s ease-out 0s 1 slideInFromTop;
+      width: 8%;
+      height: 8%;
+      position: relative;
+      right: 28%;
+      animation: 1s ease-out 0s 1 slideInFromTop;
     }
 }

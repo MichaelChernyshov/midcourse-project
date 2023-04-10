@@ -19,37 +19,35 @@ function searchPokemon() {
     fetch(URL + searchInp.value)
     .then(response => {
         if (response.ok) {
-            searchInp.value = '';
             searchInp.style.borderColor = '#ddd';
             searchInp.placeholder = 'Pokemon added at the end';
             return response.json();
         } else {
-            searchInp.value = '';
             searchInp.style.borderColor = 'red';
             searchInp.placeholder = 'Enter another name of number';
         }
     })
     .then(data => {
-        
         createPokemon(data);
-        // showPokemon(data)
+        showPokemon(data)
     })
 };
 
-// function showPokemon(pokemon) {
-//     const pokeNames = document.querySelectorAll('.card__poke-name');
-//     const pokeNumbers = document.querySelectorAll('.card__number')
-//     const search = searchInp.value.toLowerCase();
+function showPokemon(pokemon) {
+    const pokeNames = document.querySelectorAll('.card__poke-name');
+    const search = searchInp.value.toLowerCase();
+    console.log(search)
 
-    
-//     pokeNames.forEach((pokeName) => {
-//         pokeName.parentElement.parentElement.style.display = 'flex';
+    pokeNames.forEach((pokeName) => {
+        pokeName.parentElement.parentElement.style.display = 'flex';
         
-//         if (!pokeName.innerHTML.toLowerCase().includes(search)) {
-//             pokeName.parentElement.parentElement.style.display = 'none';
-//         }
-//     });
-// }
+        if (!pokeName.innerHTML.toLowerCase().includes(search)) {
+            pokeName.parentElement.parentElement.style.display = 'none';
+        }
+    });
+
+    searchInp.value = '';
+}
 
 function createPokemon(data) {
     let types = data.types.map((type) => type.type.name);
